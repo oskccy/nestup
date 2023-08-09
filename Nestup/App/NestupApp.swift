@@ -12,6 +12,7 @@ struct NestupApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+            Users()
         }
     }
 }
