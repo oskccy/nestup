@@ -13,6 +13,12 @@
 		471CDD302A848ADB004FFC41 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471CDD2F2A848ADB004FFC41 /* FeedView.swift */; };
 		471CDD322A848AED004FFC41 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471CDD312A848AED004FFC41 /* FeedCell.swift */; };
 		4758BC5C2A849772006C02A1 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4758BC5B2A849772006C02A1 /* SearchView.swift */; };
+		4758BC5E2A84A94C006C02A1 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4758BC5D2A84A94C006C02A1 /* LoginView.swift */; };
+		4758BC602A84B213006C02A1 /* AddEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4758BC5F2A84B213006C02A1 /* AddEmailView.swift */; };
+		4758BC622A84B4EE006C02A1 /* TextFieldModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4758BC612A84B4EE006C02A1 /* TextFieldModifier.swift */; };
+		4758BC642A84B5F4006C02A1 /* CreateUsernameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4758BC632A84B5F4006C02A1 /* CreateUsernameView.swift */; };
+		4758BC662A84B8ED006C02A1 /* CreatePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4758BC652A84B8ED006C02A1 /* CreatePasswordView.swift */; };
+		4758BC682A84B9BF006C02A1 /* CompleteSignedUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4758BC672A84B9BF006C02A1 /* CompleteSignedUpView.swift */; };
 		47D4C4162A81DA260034D459 /* NestupApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D4C4152A81DA260034D459 /* NestupApp.swift */; };
 		47D4C4182A81DA260034D459 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D4C4172A81DA260034D459 /* ContentView.swift */; };
 		47D4C41A2A81DA270034D459 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47D4C4192A81DA270034D459 /* Assets.xcassets */; };
@@ -26,6 +32,12 @@
 		471CDD2F2A848ADB004FFC41 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		471CDD312A848AED004FFC41 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		4758BC5B2A849772006C02A1 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		4758BC5D2A84A94C006C02A1 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		4758BC5F2A84B213006C02A1 /* AddEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEmailView.swift; sourceTree = "<group>"; };
+		4758BC612A84B4EE006C02A1 /* TextFieldModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldModifier.swift; sourceTree = "<group>"; };
+		4758BC632A84B5F4006C02A1 /* CreateUsernameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUsernameView.swift; sourceTree = "<group>"; };
+		4758BC652A84B8ED006C02A1 /* CreatePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePasswordView.swift; sourceTree = "<group>"; };
+		4758BC672A84B9BF006C02A1 /* CompleteSignedUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteSignedUpView.swift; sourceTree = "<group>"; };
 		47D4C4122A81DA260034D459 /* Nestup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nestup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		47D4C4152A81DA260034D459 /* NestupApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NestupApp.swift; sourceTree = "<group>"; };
 		47D4C4172A81DA260034D459 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -48,6 +60,7 @@
 			isa = PBXGroup;
 			children = (
 				471CDD2B2A84850C004FFC41 /* UserStatView.swift */,
+				4758BC612A84B4EE006C02A1 /* TextFieldModifier.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -138,6 +151,11 @@
 		47D4C4282A81DA9A0034D459 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				4758BC5D2A84A94C006C02A1 /* LoginView.swift */,
+				4758BC5F2A84B213006C02A1 /* AddEmailView.swift */,
+				4758BC632A84B5F4006C02A1 /* CreateUsernameView.swift */,
+				4758BC652A84B8ED006C02A1 /* CreatePasswordView.swift */,
+				4758BC672A84B9BF006C02A1 /* CompleteSignedUpView.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -259,14 +277,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4758BC682A84B9BF006C02A1 /* CompleteSignedUpView.swift in Sources */,
 				471CDD322A848AED004FFC41 /* FeedCell.swift in Sources */,
 				471CDD282A847D5B004FFC41 /* ProfileView.swift in Sources */,
 				471CDD262A84786D004FFC41 /* MainViewTab.swift in Sources */,
+				4758BC5E2A84A94C006C02A1 /* LoginView.swift in Sources */,
 				47D4C4182A81DA260034D459 /* ContentView.swift in Sources */,
+				4758BC602A84B213006C02A1 /* AddEmailView.swift in Sources */,
+				4758BC642A84B5F4006C02A1 /* CreateUsernameView.swift in Sources */,
 				4758BC5C2A849772006C02A1 /* SearchView.swift in Sources */,
 				471CDD2C2A84850C004FFC41 /* UserStatView.swift in Sources */,
 				471CDD302A848ADB004FFC41 /* FeedView.swift in Sources */,
+				4758BC622A84B4EE006C02A1 /* TextFieldModifier.swift in Sources */,
 				47D4C4162A81DA260034D459 /* NestupApp.swift in Sources */,
+				4758BC662A84B8ED006C02A1 /* CreatePasswordView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
