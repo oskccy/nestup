@@ -8,6 +8,7 @@
 import Foundation
 
 var users: [User] = load("userData.json")
+var posts: [Post] = load("postData.json")
 
 func load<T: Decodable>(_ filename: String) -> T {
     let data: Data
