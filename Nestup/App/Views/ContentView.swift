@@ -8,7 +8,29 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var selection: Tab = .feed
+    
+    enum Tab {
+        case feed
+        case users
+    }
+    
     var body: some View {
+        
+        TabView(selection: $selection) {
+            Posts()
+                .tag(Tab.feed)
+                .tabItem {
+                    Label("Feed", systemImage: "star")
+                }
+
+            Users()
+                .tag(Tab.users)
+                .tabItem {
+                    Label("Users", systemImage: "list.bullet")
+                }
+        }
+        .padding(16.0)
         VStack {
             Image(systemName: "globe")
                 .imageScale(.large)

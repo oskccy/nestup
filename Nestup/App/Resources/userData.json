@@ -2,17 +2,20 @@
     "id": 1,
     "firstname": "Aaron",
     "lastname": "Arellano",
-    "email": "aaronjobarellano@gmail.com"
+    "email": "aaronjobarellano@gmail.com",
+    "vip": true
 },
 {
     "id": 2,
     "firstname": "Oscar",
     "lastname": "Spencer",
-    "email": "oscarspencer@gmail.com"
+    "email": "oscarspencer@gmail.com",
+    "vip": false
 },
 {
     "id": 3,
     "firstname": "Thomas",
     "lastname": "Ross",
-    "email": "ilicktoes2005@gmail.com"
+    "email": "ilicktoes2005@gmail.com",
+    "vip": false
 }]

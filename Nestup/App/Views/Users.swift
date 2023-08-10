@@ -13,21 +13,35 @@ struct UserView: View {
     var body: some View {
         HStack {
             Text(user.firstname)
-                .font(.title)
-                .foregroundColor(Color.red)
+                .foregroundColor(user.vip ? .red : .black)
+                .font(.body)
             Text(user.lastname)
-                .font(.title)
+                .foregroundColor(user.vip ? .red : .black)
+                .font(.body)
             Text(user.email)
                 .font(.caption)
+            
         }
     }
 }
 
 struct Users: View {
     var body: some View {
-        List(users) { user in
-            UserView(user: user)
+        NavigationView {
+            ZStack {
+                List(users) { user in
+                    NavigationLink {
+                        UserView(user: user)
+                    } label: {
+                        Text(user.firstname)
+                    }
+                }
+                .navigationTitle("Users")
+                .listStyle(InsetListStyle())
+            }
         }
+        
+        
     }
 }
 
