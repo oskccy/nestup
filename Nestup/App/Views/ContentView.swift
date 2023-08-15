@@ -9,35 +9,35 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var selection: Tab = .feed
+    private let userId: Int = 1
     
     enum Tab {
         case feed
-        case users
+        case search
+        case profile
     }
     
     var body: some View {
         
         TabView(selection: $selection) {
-            Posts()
+            FeedView()
                 .tag(Tab.feed)
                 .tabItem {
                     Label("Feed", systemImage: "star")
                 }
-
-            Users()
-                .tag(Tab.users)
+            
+            SearchView()
+                .tag(Tab.search)
                 .tabItem {
-                    Label("Users", systemImage: "list.bullet")
+                    Label("Search", systemImage: "magnifyingglass")
+                }
+            ProfileView(user: users[userId])
+                .tag(Tab.profile)
+                .tabItem {
+                    Label("Profile", systemImage: "person")
                 }
         }
-        .padding(16.0)
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-        }
-        .padding()
+        .padding(.vertical, 16.0)
     }
 }
 
