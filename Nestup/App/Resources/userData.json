@@ -1,21 +1,33 @@
 [{
     "id": 1,
+    "username": "adolf_oscar",
+    "image": "russ-outfit",
+    "followers": 1300,
+    "following": 123,
+    "bio": "I have aids",
     "firstname": "Aaron",
     "lastname": "Arellano",
     "email": "aaronjobarellano@gmail.com",
-    "vip": true
 },
 {
     "id": 2,
+    "username": "ilicktoes2003",
+    "image": "popping-bottle",
+    "followers": -243,
+    "following": 100000,
+    "bio": "gay!",
     "firstname": "Oscar",
     "lastname": "Spencer",
-    "email": "oscarspencer@gmail.com",
-    "vip": false
+    "email": "aaronjobarellano@gmail.com",
 },
 {
     "id": 3,
-    "firstname": "Thomas",
-    "lastname": "Ross",
+    "username": "bronsexual10000",
+    "image": "default",
+    "followers": 20,
+    "following": 230,
+    "bio": "certified boy lover",
+    "firstname": "Aiden",
+    "lastname": "Koshy",
     "email": "ilicktoes2005@gmail.com",
-    "vip": false
 }]
