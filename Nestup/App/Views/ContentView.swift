@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var userSession : UserSession
+    
     @State private var selection: Tab = .feed
     private let userId: Int = 1
     
@@ -18,31 +20,34 @@ struct ContentView: View {
     }
     
     var body: some View {
-        
-        TabView(selection: $selection) {
-            FeedView()
-                .tag(Tab.feed)
-                .tabItem {
-                    Label("Feed", systemImage: "star")
-                }
-            
-            SearchView()
-                .tag(Tab.search)
-                .tabItem {
-                    Label("Search", systemImage: "magnifyingglass")
-                }
-            ProfileView(user: users[userId])
-                .tag(Tab.profile)
-                .tabItem {
-                    Label("Profile", systemImage: "person")
-                }
+        if userSession.authenticated {
+            TabView(selection: $selection) {
+                FeedView()
+                    .tag(Tab.feed)
+                    .tabItem {
+                        Label("Feed", systemImage: "star")
+                    }
+                
+                SearchView()
+                    .tag(Tab.search)
+                    .tabItem {
+                        Label("Search", systemImage: "magnifyingglass")
+                    }
+                ProfileView(user: users[userId])
+                    .tag(Tab.profile)
+                    .tabItem {
+                        Label("Profile", systemImage: "person")
+                    }
+            }
+            .padding(.vertical, 16.0)
+        } else {
+            LoginView()
         }
-        .padding(.vertical, 16.0)
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView().environmentObject(UserSession())
     }
 }

@@ -8,6 +8,18 @@
 import Foundation
 import SwiftUI
 
+class UserSession: ObservableObject {
+    @Published var authenticated: Bool = false
+    @Published var failedAuth: Bool = false
+    @Published var failedCreate: Bool = false
+}
+
+class CreateUser: ObservableObject {
+    @Published var email: String = ""
+    @Published var username: String = ""
+    @Published var password: String = ""
+}
+
 struct User: Hashable, Codable, Identifiable {
     var id: Int
     var username: String

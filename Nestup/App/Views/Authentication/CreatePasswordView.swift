@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CreatePasswordView: View {
-    @State private var password = ""
+    @EnvironmentObject var createUser : CreateUser
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -23,13 +23,14 @@ struct CreatePasswordView: View {
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 24)
             
-            SecureField("Password", text: $password)
+            SecureField("Password", text: $createUser.password)
                 .autocapitalization(.none)
                 .modifier(TextFieldModifier())
                 .padding(.top)
             
             NavigationLink {
                 CompleteSignedUpView()
+                    .environmentObject(createUser)
                     .navigationBarBackButtonHidden(true)
             } label: {
                 Text("Next")
@@ -58,6 +59,6 @@ struct CreatePasswordView: View {
 
 struct CreatePasswordView_Previews: PreviewProvider {
     static var previews: some View {
-        CreatePasswordView()
+        CreatePasswordView().environmentObject(CreateUser())
     }
 }
