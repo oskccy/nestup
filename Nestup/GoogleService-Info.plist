@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>501760411700-f2eprb06rt2u9bn3722ve9vkhcl14gpc.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.501760411700-f2eprb06rt2u9bn3722ve9vkhcl14gpc</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDvrZ2JZN51Nwdd_Ri-lMtz_uPfUKi9Gns</string>
+	<key>GCM_SENDER_ID</key>
+	<string>501760411700</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.oscar.Nestup</string>
+	<key>PROJECT_ID</key>
+	<string>nestup-c76a3</string>
+	<key>STORAGE_BUCKET</key>
+	<string>nestup-c76a3.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:501760411700:ios:c36a7421d3635f4134e261</string>
+</dict>
+</plist>

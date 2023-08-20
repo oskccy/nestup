@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CreateUsernameView: View {
-    @State private var username = ""
+    @EnvironmentObject var createUser : CreateUser
     @Environment(\.dismiss) var dismiss
     var body: some View {
         VStack(spacing: 12) {
@@ -16,18 +16,19 @@ struct CreateUsernameView: View {
                 .font(.title2)
                 .fontWeight(.bold)
                 .padding(.top)
-            Text("You'll use this email to sign in to your account")
+            Text("This username will be your display name.")
                 .font(.footnote)
                 .foregroundColor(.gray)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 24)
             
-            TextField("Email", text: $username)
+            TextField("Username", text: $createUser.username)
                 .autocapitalization(.none)
                 .modifier(TextFieldModifier())
             
             NavigationLink {
                 CreatePasswordView()
+                    .environmentObject(createUser)
                     .navigationBarBackButtonHidden(true)
             } label: {
                 Text("Next")
@@ -58,6 +59,6 @@ struct CreateUsernameView: View {
 
 struct CreateUsernameView_Previews: PreviewProvider {
     static var previews: some View {
-        CreateUsernameView()
+        CreateUsernameView().environmentObject(CreateUser())
     }
 }

@@ -6,17 +6,55 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct CompleteSignedUpView: View {
-    @State private var email = ""
+    @EnvironmentObject var userSession: UserSession
+    @EnvironmentObject var createUser : CreateUser
     @Environment(\.dismiss) var dismiss
+    
+    @State private var errorRe: String = ""
+    
+    func signup() {
+        Auth.auth().createUser(withEmail: createUser.email, password: createUser.password) { authResult, error in
+            if error != nil {
+                errorRe = error?.localizedDescription ?? ""
+                userSession.failedCreate = true
+                print(errorRe)
+            } else {
+                userSession.failedCreate = false
+                let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+                changeRequest?.displayName = createUser.username
+                changeRequest?.commitChanges {
+                    error in
+                    if error != nil {
+                        errorRe = error?.localizedDescription ?? ""
+                        userSession.failedCreate = true
+                        print(errorRe)
+                    } else {
+                        userSession.failedCreate = false
+                        
+                        Auth.auth().signIn(withEmail: createUser.email, password: createUser.password) { (result, error) in
+                            if error != nil {
+                                userSession.failedAuth = true
+                                print(error?.localizedDescription ?? "")
+                            } else {
+                                userSession.authenticated = true
+                                userSession.failedAuth = false
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
     
     var body: some View {
         VStack(spacing: 12) {
             
             Spacer()
             
-            Text("Welcome do Nestup, aaron.arellano!")
+            Text("Welcome do Nestup, \(createUser.username)!")
                 .font(.title2)
                 .fontWeight(.bold)
                 .padding(.top)
@@ -29,7 +67,7 @@ struct CompleteSignedUpView: View {
                 .padding(.horizontal, 24)
             
             Button {
-              print("Complete sign up")
+                signup()
             } label: {
                 Text("Complete sign up")
                     .font(.subheadline)
@@ -52,11 +90,21 @@ struct CompleteSignedUpView: View {
                     }
             }
         }
+        .alert(isPresented: $userSession.failedCreate) {
+            Alert(
+                title: Text("Error signing up."),
+                message: Text(errorRe),
+                primaryButton: .default(Text("OK")),
+                secondaryButton: .cancel(Text("Cancel"))
+            )
+        }
     }
 }
 
 struct CompleteSignedUpView_Previews: PreviewProvider {
     static var previews: some View {
         CompleteSignedUpView()
+            .environmentObject(UserSession())
+            .environmentObject(CreateUser())
     }
 }
