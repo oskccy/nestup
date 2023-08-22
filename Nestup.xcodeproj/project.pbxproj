@@ -38,6 +38,7 @@
 		FBB9CF4A2A8F104E001E0035 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = FBB9CF492A8F104E001E0035 /* FirebaseRemoteConfig */; };
 		FBB9CF4C2A8F104E001E0035 /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FBB9CF4B2A8F104E001E0035 /* FirebaseRemoteConfigSwift */; };
 		FBB9CF4F2A8F182E001E0035 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = FBB9CF4E2A8F182E001E0035 /* FirebaseAuth */; };
+		FBB9CF572A93C3FD001E0035 /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB9CF562A93C3FD001E0035 /* FirestoreManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +64,7 @@
 		FB1CAF6D2A84B4A40074334E /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		FB7E5B442A874F1D00843C24 /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		FBB9CF382A8F0CDC001E0035 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FBB9CF562A93C3FD001E0035 /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				47D4C4152A81DA260034D459 /* NestupApp.swift */,
+				FBB9CF552A93C3C4001E0035 /* Database */,
 				FB1CAF622A8360660074334E /* Models */,
 				FB1CAF5D2A835FC70074334E /* Resources */,
 				FB1CAF5C2A835FAA0074334E /* Views */,
@@ -232,6 +235,14 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FBB9CF552A93C3C4001E0035 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				FBB9CF562A93C3FD001E0035 /* FirestoreManager.swift */,
+			);
+			path = Database;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -329,6 +340,7 @@
 				47D4C4182A81DA260034D459 /* ContentView.swift in Sources */,
 				4758BC602A84B213006C02A1 /* AddEmailView.swift in Sources */,
 				4758BC642A84B5F4006C02A1 /* CreateUsernameView.swift in Sources */,
+				FBB9CF572A93C3FD001E0035 /* FirestoreManager.swift in Sources */,
 				4758BC5C2A849772006C02A1 /* SearchView.swift in Sources */,
 				471CDD2C2A84850C004FFC41 /* UserStatView.swift in Sources */,
 				471CDD302A848ADB004FFC41 /* FeedView.swift in Sources */,

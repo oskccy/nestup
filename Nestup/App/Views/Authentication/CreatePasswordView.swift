@@ -31,6 +31,7 @@ struct CreatePasswordView: View {
             NavigationLink {
                 CompleteSignedUpView()
                     .environmentObject(createUser)
+                    .environmentObject(UserManager())
                     .navigationBarBackButtonHidden(true)
             } label: {
                 Text("Next")

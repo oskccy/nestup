@@ -26,6 +26,7 @@ struct AddEmailView: View {
             TextField("Email", text: $createUser.email)
                 .autocapitalization(.none)
                 .modifier(TextFieldModifier())
+                .disableAutocorrection(true)
             
             NavigationLink {
                 CreateUsernameView()

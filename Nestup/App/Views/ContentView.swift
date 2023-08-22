@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var userSession : UserSession
+    @EnvironmentObject var userManager: UserManager
     
     @State private var selection: Tab = .feed
     private let userId: Int = 1
@@ -49,5 +50,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView().environmentObject(UserSession())
+            .environmentObject(UserManager())
     }
 }
