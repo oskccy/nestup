@@ -17,11 +17,13 @@ struct ContentView: View {
     enum Tab {
         case feed
         case search
+        case posting
         case profile
     }
     
     var body: some View {
-        if userSession.authenticated {
+//        if userSession.authenticated {
+        if true {
             TabView(selection: $selection) {
                 FeedView()
                     .tag(Tab.feed)
@@ -34,6 +36,12 @@ struct ContentView: View {
                     .tabItem {
                         Label("Search", systemImage: "magnifyingglass")
                     }
+                PostingView()
+                    .tag(Tab.posting)
+                    .tabItem {
+                        Label("Post", systemImage: "plus.app")
+                    }
+                
                 ProfileView(user: users[userId])
                     .tag(Tab.profile)
                     .tabItem {

@@ -1,19 +1,20 @@
 //
-//  FirestoreManager.swift
+//  PostManager.swift
 //  Nestup
 //
-//  Created by Aaron Arellano on 2023-08-21.
+//  Created by Aaron Arellano on 2023-08-22.
 //
 
 import Foundation
 import SwiftUI
 import Firebase
 
-class UserManager: ObservableObject {
-    @Published var username: String = ""
+class PostManager: ObservableObject {
+    @State private var storageManager: StorageManager = StorageManager()
+    private let keyLength = 10
+    let db = Firestore.firestore()
     
     func fetchUserData(_ uid: String, completion: @escaping (String?, Error?) -> Void) {
-        let db = Firestore.firestore()
 
         let docRef = db.collection("userData").document(uid)
 
@@ -35,7 +36,6 @@ class UserManager: ObservableObject {
     }
     
     func setUsername(_ email: String, _ username: String, completion: @escaping (Bool, Error?) -> Void) {
-        let db = Firestore.firestore()
 
         let docRef = db.collection("userData").document(email)
 
@@ -50,21 +50,29 @@ class UserManager: ObservableObject {
         }
     }
     
-    func isUsernameUnique(_ username: String, completion: @escaping (Bool, Error?) -> Void) {
-        let db = Firestore.firestore()
-        let collectionRef = db.collection("userData")
+    
+    func generateKey(length: Int, completion: @escaping (String, Error?) -> Void) {
+        let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        let collectionRef = db.collection("posts")
+        
+        var pID = String((0..<length).map{ _ in letters.randomElement()! })
+        var pIDvalid = false
+        
+        while !pIDvalid {
+            collectionRef.whereField("postID", isEqualTo: pID).getDocuments { snapshot, error in
+                if let error = error {
+                    completion("", error)
+                    return
+                }
 
-        collectionRef.whereField("username", isEqualTo: username).getDocuments { snapshot, error in
-            if let error = error {
-                completion(false, error)
-                return
-            }
-
-            if let documents = snapshot?.documents, !documents.isEmpty {
-                completion(false, nil)
-            } else {
-                completion(true, nil)
+                if let documents = snapshot?.documents, !documents.isEmpty {
+                    pID = String((0..<length).map{ _ in letters.randomElement()! })
+                } else {
+                    pIDvalid = true
+                }
             }
         }
+        
+        completion(pID, nil)
     }
 }
