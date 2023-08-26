@@ -32,21 +32,21 @@ struct PostCell: View {
             
             VStack {
                 if (post.postType == "image") {
-                    Image(post.image)
-                        .resizable()
-                        .scaledToFill()
-                        .frame(height: 400)
-                        .clipShape(Rectangle())
+//                    Image(post.image)
+//                        .resizable()
+//                        .scaledToFill()
+//                        .frame(height: 400)
+//                        .clipShape(Rectangle())
                 }
                 else if (post.postType == "text") {
                     Text(postText)
                 }
                 else if (post.postType == "hybrid") {
-                    Image(post.image)
-                        .resizable()
-                        .scaledToFill()
-                        .frame(height: 400)
-                        .clipShape(Rectangle())
+//                    Image(post.image)
+//                        .resizable()
+//                        .scaledToFill()
+//                        .frame(height: 400)
+//                        .clipShape(Rectangle())
                     Text(postText)
                 }
             }
@@ -93,12 +93,12 @@ struct PostCell: View {
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding([.top, .leading, .trailing])
             
-            Text(post.date)
-                .font(.footnote)
-                .fontWeight(.semibold)
-                .padding(.top, 1)
-                .frame(maxWidth: .infinity, alignment: .center)
-                .foregroundColor(.gray)
+//            Text(post.date)
+//                .font(.footnote)
+//                .fontWeight(.semibold)
+//                .padding(.top, 1)
+//                .frame(maxWidth: .infinity, alignment: .center)
+//                .foregroundColor(.gray)
             
             Divider()
                 .frame(height: 1)

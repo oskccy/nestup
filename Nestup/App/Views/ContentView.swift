@@ -22,8 +22,7 @@ struct ContentView: View {
     }
     
     var body: some View {
-//        if userSession.authenticated {
-        if true {
+        if userSession.authenticated {
             TabView(selection: $selection) {
                 FeedView()
                     .tag(Tab.feed)

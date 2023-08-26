@@ -18,14 +18,11 @@ struct CompleteSignedUpView: View {
     @State private var userManager: UserManager = UserManager()
     
     func signup() {
-        print("0")
         userManager.isUsernameUnique(createUser.username) { unique, error in
             if error != nil {
                 errorRe = error?.localizedDescription ?? ""
                 userSession.failedCreate = true
             }
-            
-            print("1")
             
             if !unique {
                 errorRe = "Username is not unique"
@@ -35,8 +32,6 @@ struct CompleteSignedUpView: View {
                 userSession.failedCreate = false
                 Auth.auth().createUser(withEmail: createUser.email, password: createUser.password) { authResult, error in
                     
-                    print("2")
-                    
                     if error != nil {
                         errorRe = error?.localizedDescription ?? ""
                         userSession.failedCreate = true
@@ -45,15 +40,13 @@ struct CompleteSignedUpView: View {
                         userSession.failedCreate = false
                         userManager.setUsername(createUser.email, createUser.username) { suc, error in
                             
-                            print("3")
-                            
                             if error != nil {
                                 errorRe = error?.localizedDescription ?? ""
                                 userSession.failedCreate = true
                             } else {
                                 userSession.failedCreate = false
                                 Auth.auth().signIn(withEmail: createUser.email, password: createUser.password) { (result, error) in
-                                    print("4")
+
                                     if error != nil {
                                         userSession.failedAuth = true
                                         print(error?.localizedDescription ?? "")

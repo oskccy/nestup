@@ -12,14 +12,14 @@ import Firebase
 class UserManager: ObservableObject {
     let db = Firestore.firestore()
     
-    func fetchUserData(_ uid: String, completion: @escaping (String?, Error?) -> Void) {
+    func fetchUserData(_ uid: String, completion: @escaping (String?, String?, Error?) -> Void) {
 
         let docRef = db.collection("userData").document(uid)
 
         docRef.getDocument { (document, error) in
             guard error == nil else {
                 print("error", error ?? "")
-                completion(nil, error)
+                completion(nil, nil, error)
                 return
             }
 
@@ -27,7 +27,8 @@ class UserManager: ObservableObject {
                 let data = document.data()
                 if let data = data {
                     print("data", data)
-                    completion(data["username"] as? String ?? "", nil)
+                    
+                    completion(data["username"] as? String ?? "", data["profilePic"] as? String ?? "", nil)
                 }
             }
         }

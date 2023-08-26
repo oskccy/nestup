@@ -47,6 +47,7 @@
 		FBB9CF4C2A8F104E001E0035 /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FBB9CF4B2A8F104E001E0035 /* FirebaseRemoteConfigSwift */; };
 		FBB9CF4F2A8F182E001E0035 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = FBB9CF4E2A8F182E001E0035 /* FirebaseAuth */; };
 		FBB9CF572A93C3FD001E0035 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB9CF562A93C3FD001E0035 /* UserManager.swift */; };
+		FBDE11672A993F1200948411 /* PostTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE11662A993F1200948411 /* PostTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +78,7 @@
 		FBA1F25C2A9542E8008A3ED9 /* PostManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostManager.swift; sourceTree = "<group>"; };
 		FBB9CF382A8F0CDC001E0035 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FBB9CF562A93C3FD001E0035 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		FBDE11662A993F1200948411 /* PostTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 			children = (
 				471CDD2B2A84850C004FFC41 /* UserStatView.swift */,
 				4758BC612A84B4EE006C02A1 /* TextFieldModifier.swift */,
+				FBDE11662A993F1200948411 /* PostTextField.swift */,
 				FBA1F25A2A952A53008A3ED9 /* ImagePicker.swift */,
 			);
 			path = Components;
@@ -374,6 +377,7 @@
 				4758BC622A84B4EE006C02A1 /* TextFieldModifier.swift in Sources */,
 				47D4C4162A81DA260034D459 /* NestupApp.swift in Sources */,
 				4758BC662A84B8ED006C02A1 /* CreatePasswordView.swift in Sources */,
+				FBDE11672A993F1200948411 /* PostTextField.swift in Sources */,
 				FB1CAF642A8360850074334E /* ModelData.swift in Sources */,
 				47D4C4162A81DA260034D459 /* NestupApp.swift in Sources */,
 				FBA1F25D2A9542E8008A3ED9 /* PostManager.swift in Sources */,
