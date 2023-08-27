@@ -8,41 +8,55 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var userSession : UserSession
+    @EnvironmentObject var userManager: UserManager
+    
     @State private var selection: Tab = .feed
+    private let userId: Int = 1
     
     enum Tab {
         case feed
-        case users
+        case search
+        case posting
+        case profile
     }
     
     var body: some View {
-        
-        TabView(selection: $selection) {
-            Posts()
-                .tag(Tab.feed)
-                .tabItem {
-                    Label("Feed", systemImage: "star")
-                }
-
-            Users()
-                .tag(Tab.users)
-                .tabItem {
-                    Label("Users", systemImage: "list.bullet")
-                }
+        if userSession.authenticated {
+            TabView(selection: $selection) {
+                FeedView()
+                    .tag(Tab.feed)
+                    .tabItem {
+                        Label("Feed", systemImage: "star")
+                    }
+                
+                SearchView()
+                    .tag(Tab.search)
+                    .tabItem {
+                        Label("Search", systemImage: "magnifyingglass")
+                    }
+                PostingView()
+                    .tag(Tab.posting)
+                    .tabItem {
+                        Label("Post", systemImage: "plus.app")
+                    }
+                
+                ProfileView(user: users[userId])
+                    .tag(Tab.profile)
+                    .tabItem {
+                        Label("Profile", systemImage: "person")
+                    }
+            }
+            .padding(.vertical, 16.0)
+        } else {
+            LoginView()
         }
-        .padding(16.0)
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-        }
-        .padding()
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView().environmentObject(UserSession())
+            .environmentObject(UserManager())
     }
 }

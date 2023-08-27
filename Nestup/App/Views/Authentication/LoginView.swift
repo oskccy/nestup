@@ -6,10 +6,26 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct LoginView: View {
+    @EnvironmentObject var userSession: UserSession
+    
     @State private var email = ""
     @State private var password = ""
+    
+    func login() {
+            Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
+            if error != nil {
+                userSession.failedAuth = true
+                print(error?.localizedDescription ?? "")
+            } else {
+                userSession.authenticated = true
+                userSession.failedAuth = false
+            }
+        }
+    }
+    
     var body: some View {
         NavigationStack  {
             VStack {
@@ -17,7 +33,7 @@ struct LoginView: View {
                 Spacer()
                 
                 // logo image
-                Image("nestup-transparent")
+                Image("nestup-logo")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 220, height: 100)
@@ -43,7 +59,7 @@ struct LoginView: View {
                 .frame(maxWidth: .infinity, alignment: .trailing)
                 
                 Button {
-                    print("Login")
+                    login()
                 } label: {
                     Text("Login")
                         .font(.subheadline)
@@ -86,6 +102,7 @@ struct LoginView: View {
                 
                 NavigationLink {
                     AddEmailView()
+                        .environmentObject(CreateUser())
                         .navigationBarBackButtonHidden(true)
                 } label: {
                     HStack(spacing: 3) {
@@ -98,12 +115,20 @@ struct LoginView: View {
                 }
                 .padding(.vertical, 16)
             }
+            .alert(isPresented: $userSession.failedAuth) {
+                Alert(
+                    title: Text("Error signing in."),
+                    message: Text("Invalid email or password."),
+                    primaryButton: .default(Text("OK")),
+                    secondaryButton: .cancel(Text("Cancel"))
+                )
+            }
         }
     }
 }
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
+        LoginView().environmentObject(UserSession())
     }
 }

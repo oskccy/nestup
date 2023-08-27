@@ -1,15 +1,54 @@
-[{
-    "id": 1,
-    "title": "Famous Kanye West Quote",
-    "text": "I don't know what's better, gettin' laid or gettin' paid."
-},
-{
-    "id": 2,
-    "title": "My fav lyrics #1",
-    "text": "As I walk through the valley of the shadow of death / I take a look at my life and realize there's not much left..."
-},
-{
-    "id": 3,
-    "title": "My opinion on Utopia",
-    "text": "Mid asl"
-}]
+[
+    {
+        "id": "1",
+        "postType": "image",
+        "profile": "Aaron",
+        "profileUId": "aaron",
+        "profilePic": "aaron",
+        "title": "Famous Kanye West Quote",
+        "image": "oscar",
+        "text": "a",
+        "caption": "I don't know what's better, gettin laid or gettin' paid.",
+        "likes": 23,
+        "date": "Aug 11"
+    },
+    {
+        "id": "2",
+        "postType": "text",
+        "profile": "Unknown",
+        "profileUId": "aaron",
+        "profilePic": "default",
+        "title": "My first java program!",
+        "image": "",
+        "text": "System.out.println(hello world!)",
+        "caption": "find god",
+        "likes": 100,
+        "date": "July 29"
+    },
+    {
+        "id": "3",
+        "postType": "hybrid",
+        "profile": "Facebook",
+        "profileUId": "aaron",
+        "profilePic": "facebook-logo",
+        "title": "Major announcement...",
+        "image": "facebook-logo",
+        "text": "Oscar is trans",
+        "caption": "Good night",
+        "likes": 1924,
+        "date": "Aug 7"
+    },
+    {
+        "id": "4",
+        "postType": "text",
+        "profile": "Aaron",
+        "profileUId": "aaron",
+        "profilePic": "aaron",
+        "title": "Full Speech",
+        "image": "",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt odio eget risus posuere volutpat. Nam at est nec justo pharetra bibendum eu in metus. Suspendisse consectetur, neque id aliquet dignissim, arcu tellus commodo urna, et ullamcorper ligula dui at urna. Maecenas elementum tellus ut velit accumsan, a bibendum urna malesuada. Quisque at arcu vestibulum, fringilla libero non, ullamcorper purus. Nullam blandit metus vel justo volutpat malesuada. Aliquam erat volutpat. Vestibulum at dui a libero tempus vestibulum. Sed vehicula libero non massa consectetur, eget hendrerit ligula luctus.",
+        "caption": "Heat",
+        "likes": -2303,
+        "date": "Aug 14"
+    }
+]

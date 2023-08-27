@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AddEmailView: View {
-    @State private var email = ""
+    @EnvironmentObject var createUser : CreateUser
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -23,12 +23,14 @@ struct AddEmailView: View {
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 24)
             
-            TextField("Email", text: $email)
+            TextField("Email", text: $createUser.email)
                 .autocapitalization(.none)
                 .modifier(TextFieldModifier())
+                .disableAutocorrection(true)
             
             NavigationLink {
                 CreateUsernameView()
+                    .environmentObject(createUser)
                     .navigationBarBackButtonHidden(true)
             } label: {
                 Text("Next")
@@ -58,6 +60,6 @@ struct AddEmailView: View {
 
 struct AddEmailView_Previews: PreviewProvider {
     static var previews: some View {
-        AddEmailView()
+        AddEmailView().environmentObject(CreateUser())
     }
 }

@@ -1,5 +1,5 @@
 //
-//  CreateUsernameView.swift
+//  CreatePasswordView.swift
 //  Nestup
 //
 //  Created by Oscar Spencer on 2023-08-10.
@@ -7,27 +7,31 @@
 
 import SwiftUI
 
-struct CreateUsernameView: View {
-    @State private var username = ""
+struct CreatePasswordView: View {
+    @EnvironmentObject var createUser : CreateUser
     @Environment(\.dismiss) var dismiss
+    
     var body: some View {
         VStack(spacing: 12) {
-            Text("Create username")
+            Text("Create a password")
                 .font(.title2)
                 .fontWeight(.bold)
                 .padding(.top)
-            Text("You'll use this email to sign in to your account")
+            Text("Your password must be at least 6 characters in length")
                 .font(.footnote)
                 .foregroundColor(.gray)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 24)
             
-            TextField("Email", text: $username)
+            SecureField("Password", text: $createUser.password)
                 .autocapitalization(.none)
                 .modifier(TextFieldModifier())
+                .padding(.top)
             
             NavigationLink {
-                CreatePasswordView()
+                CompleteSignedUpView()
+                    .environmentObject(createUser)
+                    .environmentObject(UserManager())
                     .navigationBarBackButtonHidden(true)
             } label: {
                 Text("Next")
@@ -42,7 +46,6 @@ struct CreateUsernameView: View {
             
             Spacer()
         }
-        
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Image(systemName: "chevron.left")
@@ -50,14 +53,13 @@ struct CreateUsernameView: View {
                     .onTapGesture{
                         dismiss()
                     }
-                
             }
         }
     }
 }
 
-struct CreateUsernameView_Previews: PreviewProvider {
+struct CreatePasswordView_Previews: PreviewProvider {
     static var previews: some View {
-        CreateUsernameView()
+        CreatePasswordView().environmentObject(CreateUser())
     }
 }
