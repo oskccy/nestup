@@ -11,38 +11,53 @@ import Firebase
 struct CompleteSignedUpView: View {
     @EnvironmentObject var userSession: UserSession
     @EnvironmentObject var createUser : CreateUser
+   
     @Environment(\.dismiss) var dismiss
     
     @State private var errorRe: String = ""
+    @State private var userManager: UserManager = UserManager()
     
     func signup() {
-        Auth.auth().createUser(withEmail: createUser.email, password: createUser.password) { authResult, error in
+        userManager.isUsernameUnique(createUser.username) { unique, error in
             if error != nil {
                 errorRe = error?.localizedDescription ?? ""
                 userSession.failedCreate = true
-                print(errorRe)
+            }
+            
+            if !unique {
+                errorRe = "Username is not unique"
+                userSession.failedCreate = true
+                
             } else {
                 userSession.failedCreate = false
-                let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
-                changeRequest?.displayName = createUser.username
-                changeRequest?.commitChanges {
-                    error in
+                Auth.auth().createUser(withEmail: createUser.email, password: createUser.password) { authResult, error in
+                    
                     if error != nil {
                         errorRe = error?.localizedDescription ?? ""
                         userSession.failedCreate = true
                         print(errorRe)
                     } else {
                         userSession.failedCreate = false
-                        
-                        Auth.auth().signIn(withEmail: createUser.email, password: createUser.password) { (result, error) in
+                        userManager.setUsername(createUser.email, createUser.username) { suc, error in
+                            
                             if error != nil {
-                                userSession.failedAuth = true
-                                print(error?.localizedDescription ?? "")
+                                errorRe = error?.localizedDescription ?? ""
+                                userSession.failedCreate = true
                             } else {
-                                userSession.authenticated = true
-                                userSession.failedAuth = false
+                                userSession.failedCreate = false
+                                Auth.auth().signIn(withEmail: createUser.email, password: createUser.password) { (result, error) in
+
+                                    if error != nil {
+                                        userSession.failedAuth = true
+                                        print(error?.localizedDescription ?? "")
+                                    } else {
+                                        userSession.authenticated = true
+                                        userSession.failedAuth = false
+                                    }
+                                }
                             }
                         }
+
                     }
                 }
             }
@@ -92,8 +107,8 @@ struct CompleteSignedUpView: View {
         }
         .alert(isPresented: $userSession.failedCreate) {
             Alert(
-                title: Text("Error signing up."),
-                message: Text(errorRe),
+                title: Text(errorRe),
+                message: Text("Please re-enter email, username and password."),
                 primaryButton: .default(Text("OK")),
                 secondaryButton: .cancel(Text("Cancel"))
             )
@@ -106,5 +121,6 @@ struct CompleteSignedUpView_Previews: PreviewProvider {
         CompleteSignedUpView()
             .environmentObject(UserSession())
             .environmentObject(CreateUser())
+            .environmentObject(UserManager())
     }
 }

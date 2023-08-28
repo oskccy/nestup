@@ -1,8 +1,9 @@
 [
     {
-        "id": 1,
+        "id": "1",
         "postType": "image",
         "profile": "Aaron",
+        "profileUId": "aaron",
         "profilePic": "aaron",
         "title": "Famous Kanye West Quote",
         "image": "oscar",
@@ -12,9 +13,10 @@
         "date": "Aug 11"
     },
     {
-        "id": 2,
+        "id": "2",
         "postType": "text",
         "profile": "Unknown",
+        "profileUId": "aaron",
         "profilePic": "default",
         "title": "My first java program!",
         "image": "",
@@ -24,9 +26,10 @@
         "date": "July 29"
     },
     {
-        "id": 3,
+        "id": "3",
         "postType": "hybrid",
         "profile": "Facebook",
+        "profileUId": "aaron",
         "profilePic": "facebook-logo",
         "title": "Major announcement...",
         "image": "facebook-logo",
@@ -36,9 +39,10 @@
         "date": "Aug 7"
     },
     {
-        "id": 4,
+        "id": "4",
         "postType": "text",
         "profile": "Aaron",
+        "profileUId": "aaron",
         "profilePic": "aaron",
         "title": "Full Speech",
         "image": "",

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var userSession : UserSession
+    @EnvironmentObject var userManager: UserManager
     
     @State private var selection: Tab = .feed
     private let userId: Int = 1
@@ -16,6 +17,7 @@ struct ContentView: View {
     enum Tab {
         case feed
         case search
+        case posting
         case profile
     }
     
@@ -33,6 +35,12 @@ struct ContentView: View {
                     .tabItem {
                         Label("Search", systemImage: "magnifyingglass")
                     }
+                PostingView()
+                    .tag(Tab.posting)
+                    .tabItem {
+                        Label("Post", systemImage: "plus.app")
+                    }
+                
                 ProfileView(user: users[userId])
                     .tag(Tab.profile)
                     .tabItem {
@@ -49,5 +57,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView().environmentObject(UserSession())
+            .environmentObject(UserManager())
     }
 }

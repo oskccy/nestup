@@ -25,6 +25,7 @@ struct CreateUsernameView: View {
             TextField("Username", text: $createUser.username)
                 .autocapitalization(.none)
                 .modifier(TextFieldModifier())
+                .disableAutocorrection(true)
             
             NavigationLink {
                 CreatePasswordView()
