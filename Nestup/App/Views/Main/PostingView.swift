@@ -21,6 +21,57 @@ struct PostingView: View {
     @State var caption = ""
     @State var selectImage = UIImage()
     
+    func post() {
+        let user = Auth.auth().currentUser!
+        
+        userManager.fetchUserData(user.email!) { username, profilePic, error in
+            if error != nil {
+                invalidPost = true
+                errorRe = error?.localizedDescription ?? "error"
+            } else if title == "" {
+                invalidPost = true
+                errorRe = "Please provide this post a title."
+                
+            } else if text == "" && selectImage.size.width == 0 {
+                invalidPost = true
+                errorRe = "Please provide this post with a text and/or an image."
+            } else {
+                invalidPost = false
+                if text != "" || selectImage.size.width != 0 {
+                    var postType = "hybrid"
+                    if text != "" && selectImage.size.width == 0{
+                        postType = "text"
+                    } else if selectImage.size.width != 0 && text == ""{
+                        postType = "image"
+                    }
+                    
+                    let post = Post(
+                        id: "",
+                        postType: postType,
+                        profile: username ?? "",
+                        profileUId: user.uid ,
+                        profilePic: profilePic ?? "",
+                        title: title,
+                        text: text,
+                        caption: caption,
+                        likes: 0,
+                        date: postManager.getDate()
+                    )
+                    
+                    let image = selectImage.size.width != 0 ? selectImage : nil
+                    
+                    postManager.upload(post, image) { suc, error in
+                        if !suc {
+                            print(error ?? "Error uploading")
+                        }
+                    }
+                    
+                    self.emptyFields()
+                }
+            }
+        }
+    }
+    
     
     var body: some View {
         NavigationStack {
@@ -76,54 +127,7 @@ struct PostingView: View {
                         .modifier(PostTextField())
                     
                     Button {
-                        let user = Auth.auth().currentUser!
-                        
-                        userManager.fetchUserData(user.email!) { username, profilePic, error in
-                            if error != nil {
-                                invalidPost = true
-                                errorRe = error?.localizedDescription ?? "error"
-                            } else if title == "" {
-                                invalidPost = true
-                                errorRe = "Please provide this post a title."
-                                
-                            } else if text == "" && selectImage.size.width == 0 {
-                                invalidPost = true
-                                errorRe = "Please provide this post with a text and/or an image."
-                            } else {
-                                invalidPost = false
-                                if text != "" || selectImage.size.width != 0 {
-                                    var postType = "hybrid"
-                                    if text != "" && selectImage.size.width == 0{
-                                        postType = "text"
-                                    } else if selectImage.size.width != 0 && text == ""{
-                                        postType = "image"
-                                    }
-                                    
-                                    let post = Post(
-                                        id: "",
-                                        postType: postType,
-                                        profile: username ?? "",
-                                        profileUId: user.uid ,
-                                        profilePic: profilePic ?? "",
-                                        title: title,
-                                        text: text,
-                                        caption: caption,
-                                        likes: 0,
-                                        date: postManager.getDate()
-                                    )
-                                    
-                                    let image = selectImage.size.width != 0 ? selectImage : nil
-                                    
-                                    postManager.upload(post, image) { suc, error in
-                                        if !suc {
-                                            print(error ?? "Error uploading")
-                                        }
-                                    }
-                                    
-                                    self.emptyFields()
-                                }
-                            }
-                        }
+                        post()
                     } label: {
                         Text("Post")
                             .padding()
