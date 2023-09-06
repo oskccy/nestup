@@ -55,11 +55,12 @@ struct PostingView: View {
                         text: text,
                         caption: caption,
                         likes: 0,
+                        tags: postManager.getTags(title, text, caption),
                         date: postManager.getDate()
                     )
                     
                     let image = selectImage.size.width != 0 ? selectImage : nil
-                    
+
                     postManager.upload(post, image) { suc, error in
                         if !suc {
                             print(error ?? "Error uploading")

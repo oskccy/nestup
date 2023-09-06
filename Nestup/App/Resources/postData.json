@@ -10,6 +10,7 @@
         "text": "a",
         "caption": "I don't know what's better, gettin laid or gettin' paid.",
         "likes": 23,
+        "tags": [],
         "date": "Aug 11"
     },
     {
@@ -23,6 +24,7 @@
         "text": "System.out.println(hello world!)",
         "caption": "find god",
         "likes": 100,
+        "tags": [],
         "date": "July 29"
     },
     {
@@ -36,6 +38,7 @@
         "text": "Oscar is trans",
         "caption": "Good night",
         "likes": 1924,
+        "tags": [],
         "date": "Aug 7"
     },
     {
@@ -49,6 +52,7 @@
         "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt odio eget risus posuere volutpat. Nam at est nec justo pharetra bibendum eu in metus. Suspendisse consectetur, neque id aliquet dignissim, arcu tellus commodo urna, et ullamcorper ligula dui at urna. Maecenas elementum tellus ut velit accumsan, a bibendum urna malesuada. Quisque at arcu vestibulum, fringilla libero non, ullamcorper purus. Nullam blandit metus vel justo volutpat malesuada. Aliquam erat volutpat. Vestibulum at dui a libero tempus vestibulum. Sed vehicula libero non massa consectetur, eget hendrerit ligula luctus.",
         "caption": "Heat",
         "likes": -2303,
+        "tags": [],
         "date": "Aug 14"
     }
 ]

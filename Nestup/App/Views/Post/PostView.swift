@@ -8,7 +8,23 @@
 import SwiftUI
 
 struct PostView: View {
+    @State private var storageManager: StorageManager = StorageManager()
+    @State private var image: UIImage = UIImage()
+    
     var post: Post
+    
+    func loadImage() {
+        if post.postType == "image" || post.postType == "hybrid" {
+            storageManager.fetchImage(post.id) { data, error in
+                if error != nil {
+                    print(error?.localizedDescription ?? "")
+                } else {
+                    image = UIImage(data: data!) ?? UIImage()
+                    print(image)
+                }
+            }
+        }
+    }
     
     var body: some View {
         VStack {
@@ -34,26 +50,29 @@ struct PostView: View {
             
             VStack {
                 if (post.postType == "image") {
-//                    Image(post.image)
-//                        .resizable()
-//                        .scaledToFill()
-//                        .frame(height: 400)
-//                        .clipShape(Rectangle())
+                    Image(uiImage: image)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(height: 400)
+                        .clipShape(Rectangle())
                 }
                 else if (post.postType == "text") {
                     Text(post.text)
                 }
                 else if (post.postType == "hybrid") {
-//                    Image(post.image)
-//                        .resizable()
-//                        .scaledToFill()
-//                        .frame(height: 400)
-//                        .clipShape(Rectangle())
+                    Image(uiImage: image)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(height: 400)
+                        .clipShape(Rectangle())
                     Text(post.text)
                 }
             }
             .padding(.all)
             .cornerRadius(20.0)
+            .onAppear {
+                loadImage()
+            }
             
             HStack (spacing: 16) {
                 Button {
@@ -83,19 +102,18 @@ struct PostView: View {
             .padding(.top, 4)
             .foregroundColor(.black)
             
-            //caption label
             
             Text(post.caption)
                 .font(.footnote)
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding([.top, .leading, .trailing])
             
-//            Text(post.date)
-//                .font(.footnote)
-//                .fontWeight(.semibold)
-//                .padding(.top, 1)
-//                .frame(maxWidth: .infinity, alignment: .center)
-//                .foregroundColor(.gray)
+            Text(post.date)
+                .font(.footnote)
+                .fontWeight(.semibold)
+                .padding(.top, 1)
+                .frame(maxWidth: .infinity, alignment: .center)
+                .foregroundColor(.gray)
         }
         .padding()
         .overlay(
@@ -107,6 +125,6 @@ struct PostView: View {
 
 struct PostView_Previews: PreviewProvider {
     static var previews: some View {
-        PostView(post: posts[0])
+        PostView(post:posts[0])
     }
 }

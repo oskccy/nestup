@@ -13,9 +13,9 @@
             continueAfterRunningActions = "No"
             filePath = "Nestup/App/Views/Post/PostView.swift"
             startingColumnNumber = "17"
-            endingColumnNumber = "21"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
+            endingColumnNumber = "17"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
