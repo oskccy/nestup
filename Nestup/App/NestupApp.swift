@@ -10,12 +10,10 @@ import Firebase
 
 @main
 struct NestupApp: App {
+    @UIApplicationDelegateAdaptor private var appDelegate : AppDelegate
+    
     @StateObject var userManager = UserManager()
     @StateObject var userSession = UserSession()
-    
-    init() {
-        FirebaseApp.configure()
-    }
     
     var body: some Scene {
         WindowGroup {

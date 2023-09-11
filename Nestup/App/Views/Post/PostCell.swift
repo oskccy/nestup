@@ -8,7 +8,27 @@
 import SwiftUI
 
 struct PostCell: View {
+    @State private var storageManager: StorageManager = StorageManager()
+    @State var image: UIImage = UIImage()
+    
     var post: Post
+    
+    func loadImage() {
+        if post.postType == "image" || post.postType == "hybrid" {
+            storageManager.fetchImage(post.id) { data, error in
+                if error != nil {
+                    print(error?.localizedDescription ?? "")
+                } else {
+                    print("image type \(type(of: image))")
+                    print("data! type \(type(of: data!))")
+                    
+                    image = UIImage(data: data!) ?? UIImage()
+                    print("update image wtih: \(image)")
+                }
+            }
+        }
+    }
+    
 
     
     var body: some View {
@@ -32,21 +52,21 @@ struct PostCell: View {
             
             VStack {
                 if (post.postType == "image") {
-//                    Image(post.image)
-//                        .resizable()
-//                        .scaledToFill()
-//                        .frame(height: 400)
-//                        .clipShape(Rectangle())
+                    Image(uiImage: image)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(height: 400)
+                        .clipShape(Rectangle())
                 }
                 else if (post.postType == "text") {
                     Text(postText)
                 }
                 else if (post.postType == "hybrid") {
-//                    Image(post.image)
-//                        .resizable()
-//                        .scaledToFill()
-//                        .frame(height: 400)
-//                        .clipShape(Rectangle())
+                    Image(uiImage: image)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(height: 400)
+                        .clipShape(Rectangle())
                     Text(postText)
                 }
             }
@@ -56,6 +76,9 @@ struct PostCell: View {
                 RoundedRectangle(cornerRadius: 20)
                     .stroke(Color(hue: 1.0, saturation: 0.0, brightness: 0.736), lineWidth: 1)
             )
+            .onAppear {
+                loadImage()
+            }
             
             // action buttons
             HStack (spacing: 16) {
@@ -93,12 +116,12 @@ struct PostCell: View {
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding([.top, .leading, .trailing])
             
-//            Text(post.date)
-//                .font(.footnote)
-//                .fontWeight(.semibold)
-//                .padding(.top, 1)
-//                .frame(maxWidth: .infinity, alignment: .center)
-//                .foregroundColor(.gray)
+            Text(post.date)
+                .font(.footnote)
+                .fontWeight(.semibold)
+                .padding(.top, 1)
+                .frame(maxWidth: .infinity, alignment: .center)
+                .foregroundColor(.gray)
             
             Divider()
                 .frame(height: 1)
@@ -119,6 +142,6 @@ struct PostCell: View {
 
 struct PostCell_Previews: PreviewProvider {
     static var previews: some View {
-        PostCell(post: posts[0])
+        PostCell(post:posts[0])
     }
 }

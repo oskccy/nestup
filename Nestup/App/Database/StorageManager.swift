@@ -13,6 +13,21 @@ import FirebaseStorage
 class StorageManager: ObservableObject {
     let storage = Storage.storage()
     
+    func fetchImage(_ pid: String, completion: @escaping (Data?, Error?) -> Void) {
+        let storageRef = storage.reference().child("images/\(pid).jpg")
+        
+        storageRef.getData(maxSize: Int64(1 * 1024 * 1024)) { data, error in
+            if error != nil {
+                print(error?.localizedDescription ?? "")
+                completion(nil, error)
+            } else {
+                print("fetched data: \(data!)")
+                print(type(of: data!))
+                completion(data!, nil)
+            }
+        }
+    }
+    
     func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage? {
         let size = image.size
         

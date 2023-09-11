@@ -15,10 +15,10 @@ struct FeedView: View {
                     ForEach(posts, id: \.self) { post in
                         NavigationLink(destination:
                                 ScrollView {
-                                    PostView(post:post)
+                            PostView(post:post)
                                 }
                             ){
-                                PostCell(post:post)
+                            PostCell(post:post)
                             }
                             .buttonStyle(PlainButtonStyle())
                         }

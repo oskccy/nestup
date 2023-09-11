@@ -7,6 +7,8 @@
 
 import SwiftUI
 import Firebase
+import FirebaseAuth
+import GoogleSignIn
 
 struct LoginView: View {
     @EnvironmentObject var userSession: UserSession
@@ -85,16 +87,28 @@ struct LoginView: View {
                 }
                 .foregroundColor(.gray)
                 
-                HStack {
-                    Image("facebook-logo")
-                        .resizable()
-                        .frame(width: 20, height: 20)
-                    Text("Continue with Facebook")
-                        .font(.footnote)
-                        .fontWeight(.semibold)
-                        .foregroundColor(Color(.systemBlue))
+                Button {
+                    GoogleAuth().signinWithGoogle() { result, error in
+                        if error != nil || !result {
+                            print("error: ", error?.localizedDescription ?? "error")
+                            userSession.failedAuth = true
+                        }
+                        
+                        if result {
+                            print("google sign in success")
+                            userSession.authenticated = true
+                            userSession.failedAuth = false
+                        }
+                    }
+                } label: {
+                    HStack {
+                        Text("Continue with Google")
+                            .font(.footnote)
+                            .fontWeight(.semibold)
+                            .foregroundColor(Color(.systemBlue))
+                    }
+                    .padding(.top)
                 }
-                .padding(.top)
                 
                 Spacer()
                 

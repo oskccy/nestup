@@ -93,4 +93,20 @@ class PostManager: ObservableObject {
         dateFormatter.dateFormat = "MMM d,yyyy h:mma"
         return dateFormatter.string(from: date)
     }
+    
+    func getTags(_ title: String, _ text: String, _ caption: String) -> Array<String> {
+        var postText = title + " " + text + " " + caption
+        postText = postText.lowercased()
+        for sChar in specialChars {
+            postText = postText.replacingOccurrences(of: sChar, with: "")
+        }
+        
+        var postTags = postText.components(separatedBy: " ")
+        for cWord in commonWords {
+            postTags = postTags.filter { $0 != cWord }
+        }
+        postTags = Array(Set(postTags))
+        
+        return postTags
+    }
 }
