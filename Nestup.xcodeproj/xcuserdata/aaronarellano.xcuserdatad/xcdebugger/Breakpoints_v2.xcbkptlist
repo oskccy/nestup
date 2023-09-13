@@ -14,58 +14,10 @@
             filePath = "Nestup/App/Views/Post/PostView.swift"
             startingColumnNumber = "17"
             endingColumnNumber = "17"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
             landmarkName = "body"
             landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "A4CEE30E-756D-43E5-9CC1-A7438F563741"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Nestup/App/Views/Authentication/CompleteSignedUpView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "14"
-            endingLineNumber = "14"
-            landmarkName = "CompleteSignedUpView"
-            landmarkType = "14">
-            <Locations>
-               <Location
-                  uuid = "A4CEE30E-756D-43E5-9CC1-A7438F563741 - 5df3064d02672b57"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Nestup.CompleteSignedUpView.dismiss.getter : SwiftUI.DismissAction"
-                  moduleName = "Nestup"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aaronarellano/nestup/Nestup/App/Views/Authentication/CompleteSignedUpView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "15"
-                  endingLineNumber = "15"
-                  offsetFromSymbolStart = "153">
-               </Location>
-               <Location
-                  uuid = "A4CEE30E-756D-43E5-9CC1-A7438F563741 - f2878267d3b90bd0"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Nestup.CompleteSignedUpView.init() -&gt; Nestup.CompleteSignedUpView"
-                  moduleName = "Nestup"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aaronarellano/nestup/Nestup/App/Views/Authentication/CompleteSignedUpView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "15"
-                  endingLineNumber = "15"
-                  offsetFromSymbolStart = "188">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

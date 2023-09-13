@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PostView: View {
     @State private var storageManager: StorageManager = StorageManager()
+    @State private var likeManager : LikeManager = LikeManager()
     @State private var image: UIImage = UIImage()
     
     var post: Post
