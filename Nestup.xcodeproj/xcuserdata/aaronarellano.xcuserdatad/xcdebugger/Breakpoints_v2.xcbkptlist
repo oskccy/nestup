@@ -14,10 +14,10 @@
             filePath = "Nestup/App/Views/Post/PostView.swift"
             startingColumnNumber = "17"
             endingColumnNumber = "17"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "body"
-            landmarkType = "24">
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "PostView"
+            landmarkType = "14">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

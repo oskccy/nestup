@@ -11,6 +11,7 @@ struct PostView: View {
     @State private var storageManager: StorageManager = StorageManager()
     @State private var likeManager : LikeManager = LikeManager()
     @State private var image: UIImage = UIImage()
+    @State var liked: Bool? = nil
     
     var post: Post
     
@@ -22,6 +23,48 @@ struct PostView: View {
                 } else {
                     image = UIImage(data: data!) ?? UIImage()
                     print(image)
+                }
+            }
+        }
+    }
+    
+    func checkLiked() {
+        likeManager.isLiked(post.id) { liked, error in
+            if error != nil {
+                print(error?.localizedDescription ?? "Error chceking if liked.")
+            } else {
+                if liked ?? false {
+                    self.liked = true
+                } else {
+                    self.liked = false
+                }
+            }
+        }
+    }
+    
+    func likeAction() {
+        if liked ?? false {
+            likeManager.unlike(post.id) { success, error in
+                if !success {
+                    if error != nil {
+                        print("Error liking.")
+                    } else {
+                        print("Failed")
+                    }
+                } else {
+                    liked = false
+                }
+            }
+        } else {
+            likeManager.like(post.id) { success, error in
+                if !success {
+                    if error != nil {
+                        print("Error liking.")
+                    } else {
+                        print("Failed")
+                    }
+                } else {
+                    liked = true
                 }
             }
         }
@@ -73,13 +116,14 @@ struct PostView: View {
             .cornerRadius(20.0)
             .onAppear {
                 loadImage()
+                checkLiked()
             }
             
             HStack (spacing: 16) {
                 Button {
-                    print("like post")
+                    likeAction()
                 } label: {
-                    Image(systemName: "heart")
+                    Image(systemName: liked ?? false ? "heart.fill" : "heart")
                         .imageScale(.large)
                 }
                 .padding(/*@START_MENU_TOKEN@*/.horizontal/*@END_MENU_TOKEN@*/)
@@ -93,7 +137,7 @@ struct PostView: View {
                 .padding(/*@START_MENU_TOKEN@*/.horizontal/*@END_MENU_TOKEN@*/)
                 
                 Button {
-                    print("share post")
+                    likeAction()
                 } label: {
                     Image(systemName: "paperplane")
                         .imageScale(.large)
