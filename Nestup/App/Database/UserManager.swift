@@ -34,11 +34,11 @@ class UserManager: ObservableObject {
         }
     }
     
-    func setUsername(_ email: String, _ username: String, completion: @escaping (Bool, Error?) -> Void) {
+    func initUser(_ email: String, _ username: String, completion: @escaping (Bool, Error?) -> Void) {
 
         let docRef = db.collection("userData").document(email)
 
-        docRef.setData(["username": username]) { error in
+        docRef.setData(["username": username, "likes": [String]()]) { error in
             if let error = error {
                 print("Error writing document: \(error)")
                 completion(false, error)

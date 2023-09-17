@@ -38,7 +38,7 @@ struct CompleteSignedUpView: View {
                         print(errorRe)
                     } else {
                         userSession.failedCreate = false
-                        userManager.setUsername(createUser.email, createUser.username) { suc, error in
+                        userManager.initUser(createUser.email, createUser.username) { suc, error in
                             
                             if error != nil {
                                 errorRe = error?.localizedDescription ?? ""

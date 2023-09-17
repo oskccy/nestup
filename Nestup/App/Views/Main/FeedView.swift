@@ -12,16 +12,16 @@ struct FeedView: View {
         NavigationView {
             ScrollView {
                 LazyVStack (spacing: 32) {
-                    ForEach(posts, id: \.self) { post in
-                        NavigationLink(destination:
-                                ScrollView {
-                            PostView(post:post)
-                                }
-                            ){
-                            PostCell(post:post)
-                            }
-                            .buttonStyle(PlainButtonStyle())
-                        }
+//                    ForEach(posts, id: \.self) { post in
+//                        NavigationLink(destination:
+//                                ScrollView {
+//                            PostView(post:post)
+//                                }
+//                            ){
+//                            PostCell(post:post)
+//                            }
+//                            .buttonStyle(PlainButtonStyle())
+//                        }
                 }
                 .padding(.vertical)
                     .navigationTitle("Feed")

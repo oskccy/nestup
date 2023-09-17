@@ -9,7 +9,9 @@ import SwiftUI
 
 struct PostCell: View {
     @State private var storageManager: StorageManager = StorageManager()
+    @State private var likeManager : LikeManager = LikeManager()
     @State var image: UIImage = UIImage()
+    @State var liked: Bool? = nil
     
     var post: Post
     
@@ -24,6 +26,48 @@ struct PostCell: View {
                     
                     image = UIImage(data: data!) ?? UIImage()
                     print("update image wtih: \(image)")
+                }
+            }
+        }
+    }
+    
+    func checkLiked() {
+        likeManager.isLiked(post.id) { liked, error in
+            if error != nil {
+                print(error?.localizedDescription ?? "Error chceking if liked.")
+            } else {
+                if liked ?? false {
+                    self.liked = true
+                } else {
+                    self.liked = false
+                }
+            }
+        }
+    }
+    
+    func likeAction() {
+        if liked ?? false {
+            likeManager.unlike(post.id) { success, error in
+                if !success {
+                    if error != nil {
+                        print("Error liking.")
+                    } else {
+                        print("Failed")
+                    }
+                } else {
+                    liked = false
+                }
+            }
+        } else {
+            likeManager.like(post.id) { success, error in
+                if !success {
+                    if error != nil {
+                        print("Error liking.")
+                    } else {
+                        print("Failed")
+                    }
+                } else {
+                    liked = true
                 }
             }
         }
@@ -78,14 +122,15 @@ struct PostCell: View {
             )
             .onAppear {
                 loadImage()
+                checkLiked()
             }
             
             // action buttons
             HStack (spacing: 16) {
                 Button {
-                    print("like post")
+                    likeAction()
                 } label: {
-                    Image(systemName: "heart")
+                    Image(systemName: liked ?? false ? "heart.fill" : "heart")
                         .imageScale(.large)
                 }
                 .padding(/*@START_MENU_TOKEN@*/.horizontal/*@END_MENU_TOKEN@*/)
