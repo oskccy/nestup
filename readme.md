@@ -1,6 +1,6 @@
 # Nestup (currently in deployment process)
 
-By: [*Oscar Sharaz Spencer*](https://www.linkedin.com/in/oscar-sharaz/)
+By: [*Oscar Sharaz Spencer*](https://www.linkedin.com/in/oscar-sharaz/) and [*Aaron Arellano*](https://www.linkedin.com/in/aaron-arellano-084858277/)
 
 ## Introduction
 
