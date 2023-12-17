@@ -2,6 +2,8 @@
 
 By: [*Oscar Sharaz Spencer*](https://www.linkedin.com/in/oscar-sharaz/) and [*Aaron Arellano*](https://www.linkedin.com/in/aaron-arellano-084858277/)
 
+this is the work of about 7 months of development, please contribute! Thanks!
+
 ## Introduction
 
 **Nestup** is the newest sensation in the world of social media, offering a fresh, feature-rich platform for sharing life's special moments. Drawing inspiration from the visual appeal of Instagram, Nestup takes your social experience to a new level, offering a space where friends and communities can come together to engage and connect.
